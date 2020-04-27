@@ -254,15 +254,15 @@ describe('PrivateKey', function() {
 
   describe('#toAddress', function() {
     it('should output this known livenet address correctly', function() {
-      var privkey = PrivateKey.fromWIF('L3T1s1TYP9oyhHpXgkyLoJFGniEgkv2Jhi138d7R2yJ9F4QdDU2m');
+      var privkey = PrivateKey.fromWIF('L26hpjy3ERE15W6J8fj7rzN9vNaKncUii8Q8H22bFYKTrYMQUek9');
       var address = privkey.toAddress();
-      address.toString().should.equal('1A6ut1tWnUq1SEQLMr4ttDh24wcbJ5o9TT');
+      address.toString().should.equal('zngrgxNxXJiCUFQsDxM3aob9qxUf4jXZDXH');
     });
 
     it('should output this known testnet address correctly', function() {
-      var privkey = PrivateKey.fromWIF('cR4qogdN9UxLZJXCNFNwDRRZNeLRWuds9TTSuLNweFVjiaE4gPaq');
+      var privkey = PrivateKey.fromWIF('L4ojwXJi7V5S8M5TofGMjbqbbGkTCTBGbvrfLVxRY8EUncffotSB');
       var address = privkey.toAddress();
-      address.toString().should.equal('mtX8nPZZdJ8d3QNLRJ1oJTiEi26Sj6LQXS');
+      address.toString().should.equal('znVe4HQXAHpF46H3H8d35DsmETc3rDecp1f');
     });
 
     it('creates network specific address', function() {
@@ -422,13 +422,13 @@ describe('PrivateKey', function() {
   });
 
   it('creates an address as expected from WIF, livenet', function() {
-    var privkey = new PrivateKey('5J2NYGstJg7aJQEqNwYp4enG5BSfFdKXVTtBLvHicnRGD5kjxi6');
-    privkey.publicKey.toAddress().toString().should.equal('135bwugFCmhmNU3SeCsJeTqvo5ViymgwZ9');
+    var privkey = new PrivateKey('2c3a48576fe6e8a466e78cd2957c9dc62128135540bbea0685d7c4a23ea35a6c');
+    privkey.publicKey.toAddress().toString().should.equal('znnjppzJG7ajT7f6Vp1AD6SjgcXBVPA2E6c');
   });
 
   it('creates an address as expected from WIF, testnet', function() {
-    var privkey = new PrivateKey('92VYMmwFLXRwXn5688edGxYYgMFsc3fUXYhGp17WocQhU6zG1kd');
-    privkey.publicKey.toAddress().toString().should.equal('moiAvLUw16qgrwhFGo1eDnXHC2wPMYiv7Y');
+    var privkey = new PrivateKey('e25e45134bfd116ea11850058f9bf9693221d38ad092409dd90eca6340cfb563');
+    privkey.publicKey.toAddress().toString().should.equal('znVe4HQXAHpF46H3H8d35DsmETc3rDecp1f');
   });
 
 });

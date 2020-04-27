@@ -17,9 +17,9 @@ var invalidbase58 = require('./data/bitcoind/base58_keys_invalid.json');
 
 describe('Address', function() {
 
-  var pubkeyhash = new Buffer('3c3fa3d4adcaf8f52d5b1843975e122548269937', 'hex');
+  var pubkeyhash = new Buffer('022df8750480ad5b26950b25c7ba79d3e37d75f640f8e5d9bcd5b150a0f85014da', 'hex');
   var buf = Buffer.concat([new Buffer([0]), pubkeyhash]);
-  var str = '16VZnHwRhwrExfeHFHGjwrgEMq8VcYPs9r';
+  var str = 'zneoT8e7yurm8Ts5uZnNt8G8bHS3kcsRbBs';
 
   it('can\'t build without data', function() {
     (function() {
@@ -68,20 +68,18 @@ describe('Address', function() {
 
   // livenet valid
   var PKHLivenet = [
-    '15vkcKf7gB23wLAnZLmbVuMiiVDc1Nm4a2',
-    '1A6ut1tWnUq1SEQLMr4ttDh24wcbJ5o9TT',
-    '1BpbpfLdY7oBS9gK7aDXgvMgr1DPvNhEB2',
-    '1Jz2yCRd5ST1p2gUqFB5wsSQfdm3jaFfg7',
-    '    1Jz2yCRd5ST1p2gUqFB5wsSQfdm3jaFfg7   \t\n'
+    'znkrMwLb762zroBjZo9Z8gVwfh6EyzEKP7X',
+    'zngrgxNxXJiCUFQsDxM3aob9qxUf4jXZDXH',
+    'znbjaiBTbEJqHdoGU8Hh2JDCXHEMTicJiFi',
+    'znYRVimT9zQDeVk8fB2MfrqZ6zpEET6KPh7',
+    '    znYRVimT9zQDeVk8fB2MfrqZ6zpEET6KPh7   \t\n'
   ];
 
   // livenet p2sh
   var P2SHLivenet = [
-    '342ftSRCvFHfCeFFBuz4xwbeqnDw6BGUey',
-    '33vt8ViH5jsr115AGkW6cEmEz9MpvJSwDk',
-    '37Sp6Rv3y4kVd1nQ1JV5pfqXccHNyZm1x3',
-    '3QjYXhTkvuj8qPaXHTTWb5wjXhdsLAAWVy',
-    '\t \n3QjYXhTkvuj8qPaXHTTWb5wjXhdsLAAWVy \r'
+    'zsf45QuD75XJdm3uLftiW6pucvbhvrbhAhZ',
+    'zsi4CcCUYtR1iNjEyjkLPjSVPzSPa4atxt9',
+    '\t \nzsi4CcCUYtR1iNjEyjkLPjSVPzSPa4atxt9 \r'
   ];
 
   // testnet p2sh

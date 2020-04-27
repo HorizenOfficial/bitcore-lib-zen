@@ -78,14 +78,14 @@ describe('HDPublicKey interface', function() {
     describe('xpubkey string serialization errors', function() {
       it('fails on invalid length', function() {
         expectFailBuilding(
-          Base58Check.encode(new buffer.Buffer([1, 2, 3])),
-          hdErrors.InvalidLength
+            Base58Check.encode(new buffer.Buffer([1, 2, 3])),
+            hdErrors.InvalidLength
         );
       });
       it('fails on invalid base58 encoding', function() {
         expectFailBuilding(
-          xpubkey + '1',
-          errors.InvalidB58Checksum
+            xpubkey + '1',
+            errors.InvalidB58Checksum
         );
       });
       it('user can ask if a string is valid', function() {
@@ -99,8 +99,8 @@ describe('HDPublicKey interface', function() {
 
     it('can generate a json that has a particular structure', function() {
       assert(_.isEqual(
-        new HDPublicKey(JSON.parse(json)).toJSON(),
-        new HDPublicKey(xpubkey).toJSON()
+          new HDPublicKey(JSON.parse(json)).toJSON(),
+          new HDPublicKey(xpubkey).toJSON()
       ));
     });
 

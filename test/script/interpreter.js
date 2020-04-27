@@ -53,6 +53,7 @@ Script.fromBitcoindString = function(str) {
       throw new Error('Could not determine type of script value');
     }
   }
+
   var buf = bw.concat();
   return this.fromBuffer(buf);
 };
@@ -124,10 +125,11 @@ describe('Interpreter', function() {
 
     it('should verify these simple transaction', function() {
       // first we create a transaction
-      var privateKey = new PrivateKey('cSBnVM4xvxarwGQuAfQFwqDg9k5tErHUHzgWsEfD4zdwUasvqRVY');
+      var privateKey = new PrivateKey('cTxiWxttiS3LiDpe4mefFtxDxENRdvvxyCV4B5kjcVphHTeuFBLu');
       var publicKey = privateKey.publicKey;
       var fromAddress = publicKey.toAddress();
-      var toAddress = 'mrU9pEmAx26HcbKVrABvgL7AwA5fjNFoDc';
+      console.log("FromAddress: "+fromAddress);
+      var toAddress = 'ztXLQcYf7cbCc8c1UfxUr7uckG4YYYa8yTG';
       var scriptPubkey = Script.buildPublicKeyHashOut(fromAddress);
       var utxo = {
         address: fromAddress,
@@ -238,6 +240,9 @@ describe('Interpreter', function() {
           return;
         }
         c++;
+        if(c==374){
+          console.log("Trovato")
+        }
         var descstr = vector[3];
         var fullScriptString = vector[0] + ' ' + vector[1];
         var comment = descstr ? (' (' + descstr + ')') : '';

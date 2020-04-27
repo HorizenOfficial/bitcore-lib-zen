@@ -335,28 +335,24 @@ describe('PublicKey', function() {
   describe('#toAddress', function() {
 
     it('should output this known mainnet address correctly', function() {
-      var pk = new PublicKey('03c87bd0e162f26969da8509cafcb7b8c8d202af30b928c582e263dd13ee9a9781');
+      var pk = new PublicKey('048a789e0910b6aa314f63d2cc666bd44fa4b71d7397cb5466902dc594c1a0a0d2e4d234528ff87b83f971ab2b12cd2939ff33c7846716827a5b0e8233049d8aad');
       var address = pk.toAddress('livenet');
-      address.toString().should.equal('1A6ut1tWnUq1SEQLMr4ttDh24wcbJ5o9TT');
+      address.toString().should.equal('znkz4JE6Y4m8xWoo4ryTnpxwBT5F7vFDgNf');
     });
 
     it('should output this known testnet address correctly', function() {
-      var pk = new PublicKey('0293126ccc927c111b88a0fe09baa0eca719e2a3e087e8a5d1059163f5c566feef');
+      var pk = new PublicKey('0309413a112884010a8f09937382b26acb3d591bc8505e153138e773f9c2167da8');
       var address = pk.toAddress('testnet');
-      address.toString().should.equal('mtX8nPZZdJ8d3QNLRJ1oJTiEi26Sj6LQXS');
+      address.toString().should.equal('ztXi742zUwXCCMn8aVv2rVkr2uAuzvAG2eH');
     });
 
   });
 
-  describe('hashes', function() {
+  describe('#hashes', function() {
 
     // wif private key, address
-    // see: https://github.com/bitcoin/bitcoin/blob/master/src/test/key_tests.cpp#L20
     var data = [
-      ['5HxWvvfubhXpYYpS3tJkw6fq9jE9j18THftkZjHHfmFiWtmAbrj', '1QFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ'],
-      ['5KC4ejrDjv152FGwP386VD1i2NYc5KkfSMyv1nGy1VGDxGHqVY3', '1F5y5E5FMc5YzdJtB9hLaUe43GDxEKXENJ'],
-      ['Kwr371tjA9u2rFSMZjTNun2PXXP3WPZu2afRHTcta6KxEUdm1vEw', '1NoJrossxPBKfCHuJXT4HadJrXRE9Fxiqs'],
-      ['L3Hq7a8FEQwJkW1M2GNKDW28546Vp5miewcCzSqUD9kCAXrJdS3g', '1CRj2HyM1CXWzHAXLQtiGLyggNT9WQqsDs']
+      ['cTxiWxttiS3LiDpe4mefFtxDxENRdvvxyCV4B5kjcVphHTeuFBLu', 'ztmJHhot5UxwhunPJy8G6mRdBNh9c4dmZDa']
     ];
     
     data.forEach(function(d){
