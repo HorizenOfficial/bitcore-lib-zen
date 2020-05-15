@@ -1,0 +1,33 @@
+{
+  "hash": "085077dca31485b9bf93e1b0ebe22c9f2f9a0bcac3f61d8dbe57b06cf4f7ed15",
+  "confirmations": 1,
+  "size": 515,
+  "height": 986,
+  "version": 3,
+  "merkleroot": "90ae6c1b72ab4f87dabb1338fd2410194a3471d23f21370559615912648c2abe",
+  "scTxsCommitment": "33e6004d8281a56b3c5f8665291a4e0ac528ea09ba0af822cc01bd9987f3a2e2",
+  "tx": [
+    "5229a7b00532ec5da3ff184ead1bace6542ea1b4f198ffc1ce3e107402cea457"
+  ],
+  "cert": [
+    "b8b7cd10ab75c126edb597a426efe819d0045e6852e53a50b4efc731061fc2df"
+  ],
+  "time": 1589191769,
+  "nonce": "00007a25fcf11e0996ea3a6b17e7c9493f93a7f112e7428592f1f584fbc40010",
+  "solution": "13572e3f8464e6cf9a1bb0ded5e4c7fead944acea37445f44e55dd6dbb217fd74e75f3a2",
+  "bits": "200f0ee2",
+  "difficulty": 1.000045599635203,
+  "chainwork": "000000000000000000000000000000000000000000000000000000000000418b",
+  "anchor": "59d2cde5e65c1414c32ba54f0fe4bdb3d67618125286e6a191317917c812c6d7",
+  "valuePools": [
+    {
+      "id": "sprout",
+      "monitored": true,
+      "chainValue": 0.00000000,
+      "chainValueZat": 0,
+      "valueDelta": 0.00000000,
+      "valueDeltaZat": 0
+    }
+  ],
+  "previousblockhash": "082193b802d11493401269269449402508af6107b8586257b20614cce9b5d200"
+}
