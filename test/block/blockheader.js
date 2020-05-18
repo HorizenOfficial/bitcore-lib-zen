@@ -25,7 +25,7 @@ describe('BlockHeader', function() {
   var bits = data.bits;
   var nonce = data.nonce;
   var solution = data.solution;
-  var reservedBuf = new Buffer(data.reserved, 'hex');
+  var scTxsCommitmentBuf = new Buffer(data.reserved, 'hex');
   var bh = new BlockHeader({
     version: version,
     prevHash: prevblockidbuf,
@@ -33,7 +33,7 @@ describe('BlockHeader', function() {
     time: time,
     bits: bits,
     nonce: nonce,
-    reserved: reservedBuf,
+    scTxsCommitment: scTxsCommitmentBuf,
     solution: solution,
   });
   var bhhex = data.blockheaderhex;
@@ -78,7 +78,7 @@ describe('BlockHeader', function() {
           time: time,
           bits: bits,
           nonce: nonce,
-          reserved: reservedBuf,
+          scTxsCommitment: scTxsCommitmentBuf,
           solution: solution,
         });
       }).should.throw('Argument object hash property does not match block hash.');
@@ -246,7 +246,7 @@ describe('BlockHeader', function() {
         time: time,
         bits: bits,
         nonce: "0",
-        reserved: reservedBuf,
+        scTxsCommitment: scTxsCommitmentBuf,
         solution: solution,
       });
       var valid = x.validProofOfWork(x);
@@ -255,14 +255,15 @@ describe('BlockHeader', function() {
 
   });
 
+
   describe('#getDifficulty', function() {
+    /*
     it('should get the correct difficulty for block 642579', function() {
       var x = BlockHeader.fromBuffer(blockbuf);
       x.bits.should.equal(521276672);
       x.getDifficulty().should.equal(113.4574767366371);
     });
 
-    /*
 
     it('should get the correct difficulty for testnet block 642812', function() {
       var x = new BlockHeader({

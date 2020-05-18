@@ -128,7 +128,6 @@ describe('Interpreter', function() {
       var privateKey = new PrivateKey('cTxiWxttiS3LiDpe4mefFtxDxENRdvvxyCV4B5kjcVphHTeuFBLu');
       var publicKey = privateKey.publicKey;
       var fromAddress = publicKey.toAddress();
-      console.log("FromAddress: "+fromAddress);
       var toAddress = 'ztXLQcYf7cbCc8c1UfxUr7uckG4YYYa8yTG';
       var scriptPubkey = Script.buildPublicKeyHashOut(fromAddress);
       var utxo = {
@@ -240,9 +239,6 @@ describe('Interpreter', function() {
           return;
         }
         c++;
-        if(c==374){
-          console.log("Trovato")
-        }
         var descstr = vector[3];
         var fullScriptString = vector[0] + ' ' + vector[1];
         var comment = descstr ? (' (' + descstr + ')') : '';

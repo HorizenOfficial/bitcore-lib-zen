@@ -46,13 +46,16 @@ describe('#Sidechain creation', function() {
             vsc_ccout : tx.sc_params.toObject().vsc_ccout,
             vcl_ccout : tx.sc_params.toObject().vcl_ccout,
             vft_ccout : tx.sc_params.toObject().vft_ccout
-          }
+          };
 
           //vsc_ccout
           assert.equal(sc.vsc_ccout.length,txJson.vsc_ccout.length);
           for (var i=0; i<txJson.vsc_ccout.length;i++) {
             assert.equal(sc.vsc_ccout[i].scid,txJson.vsc_ccout[i].scid);
             assert.equal(sc.vsc_ccout[i].epoch_length,txJson.vsc_ccout[i]["withdrawal epoch length"]);
+            assert.equal(sc.vsc_ccout[i].satoshis / 1e8,txJson.vsc_ccout[i].value);
+            assert.equal(sc.vsc_ccout[i].address,txJson.vsc_ccout[i].address);
+            assert.equal(sc.vsc_ccout[i].customData,txJson.vsc_ccout[i].customData);
           }
 
           //vcl_ccout
@@ -63,7 +66,7 @@ describe('#Sidechain creation', function() {
           assert.equal(sc.vft_ccout.length,txJson.vft_ccout.length);
           for (var i=0; i<txJson.vft_ccout.length;i++) {
             assert.equal(sc.vft_ccout[i].scid,txJson.vft_ccout[i].scid);
-            assert.equal(tx.sc_params.vft_ccout[i].amount,txJson.vft_ccout[i].value);
+            assert.equal(tx.sc_params.vft_ccout[i].satoshis / 1e8,txJson.vft_ccout[i].value);
             assert.equal(sc.vft_ccout[i].address,txJson.vft_ccout[i].address);
           }
 
@@ -71,7 +74,7 @@ describe('#Sidechain creation', function() {
           assert.equal(tx.toBuffer().toString('hex'),hexa);
 
           //create transaction from existing transaction
-          var new_Tx =  Transaction(tx.toObject());         
+          var new_Tx =  Transaction(tx.toObject());
           assert.equal(new_Tx.toBuffer().toString('hex'),tx.toBuffer().toString('hex'));
         }
       });

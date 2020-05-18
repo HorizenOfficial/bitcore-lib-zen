@@ -628,7 +628,7 @@ describe('Script', function() {
     var sortkeys = pubKeyHexes.slice(0, 3).map(PublicKey);
     it('should create sorted script by default', function() {
       var s = Script.buildMultisigOut(sortkeys, 2);
-      s.toString().should.equal('OP_2 33 0x021f2f6e1e50cb6a953935c3601284925decd3fd21bc445712576873fb8c6ebc18 33 0x022df8750480ad5b26950b25c7ba79d3e37d75f640f8e5d9bcd5b150a0f85014da 33 0x03e3818b65bcc73a7d64064106a859cc1a5a728c4345ff0b641209fba0d90de6e9 OP_3 OP_CHECKMULTISIG');
+      s.toString().should.equal('OP_2 33 0x022df8750480ad5b26950b25c7ba79d3e37d75f640f8e5d9bcd5b150a0f85014da 33 0x03e3818b65bcc73a7d64064106a859cc1a5a728c4345ff0b641209fba0d90de6e9 33 0x021f2f6e1e50cb6a953935c3601284925decd3fd21bc445712576873fb8c6ebc18 OP_3 OP_CHECKMULTISIG');
       s.isMultisigOut().should.equal(true);
     });
     it('should fail when number of required signatures is greater than number of pubkeys', function() {
@@ -636,15 +636,6 @@ describe('Script', function() {
       expect(function() {
         return Script.buildMultisigOut(sortkeys, 4);
       }).to.throw('Number of required signatures must be less than or equal to the number of public keys');
-    });
-    it('should create unsorted script if specified', function() {
-      var s = Script.buildMultisigOut(sortkeys, 2);
-      var u = Script.buildMultisigOut(sortkeys, 2, {
-        noSorting: true
-      });
-      s.toString().should.not.equal(u.toString());
-      u.toString().should.equal('OP_2 33 0x022df8750480ad5b26950b25c7ba79d3e37d75f640f8e5d9bcd5b150a0f85014da 33 0x03e3818b65bcc73a7d64064106a859cc1a5a728c4345ff0b641209fba0d90de6e9 33 0x021f2f6e1e50cb6a953935c3601284925decd3fd21bc445712576873fb8c6ebc18 OP_3 OP_CHECKMULTISIG');
-      s.isMultisigOut().should.equal(true);
     });
     var test_mn = function(m, n) {
       var pubkeys = pubKeyHexes.slice(0, n).map(PublicKey);
@@ -749,7 +740,7 @@ describe('Script', function() {
     });
 
     it('inherits network property form an address', function() {
-      var address = new Address('zsf45QuD75XJdm3uLftiW6pucvbhvrbhAhZ');
+      var address = new Address('zrMgbokJSQS5SR8rXd6isroxYLYbdTdmwsF');
       var script = Script.buildScriptHashOut(address);
       should.exist(script._network);
       script._network.should.equal(address.network);

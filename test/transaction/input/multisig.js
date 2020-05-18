@@ -23,7 +23,6 @@ describe('MultiSigInput', function() {
   var public3 = privateKey3.publicKey;
   var address = new Address('zrMgbokJSQS5SR8rXd6isroxYLYbdTdmwsF');
   var x = Script.buildMultisigOut([public1, public2, public3], 2).toScriptHashOut();
-  console.log(x);
   var output = {
     txId: 'b442e6ae1eea8c72ea70a3f3ea9ecc91adafd575ab7209cde3bad304f0c1605f',
     outputIndex: 0,

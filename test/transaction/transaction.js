@@ -33,9 +33,8 @@ describe('Transaction', function() {
       return new Transaction(1);
     }).to.throw(errors.InvalidArgument);
   });
-
-  var testScript = 'OP_DUP OP_HASH160 20 0x88d9931ea73d60eaf7e5671efc0552b912911f2a OP_EQUALVERIFY OP_CHECKSIG';
-  var testScriptHex = '76a91488d9931ea73d60eaf7e5671efc0552b912911f2a88ac';
+  var testScript = 'OP_DUP OP_HASH160 20 0x7ed73259598bec612b10e24bbf96d273d5e8c735 OP_EQUALVERIFY OP_CHECKSIG 32 0xbb1acf2c1fc1228967a611c7db30632098f0c641855180b5fe23793b72eea50d 1 0x15 OP_CHECKBLOCKATHEIGHT';
+  var testScriptHex = '76a9147ed73259598bec612b10e24bbf96d273d5e8c73588ac20bb1acf2c1fc1228967a611c7db30632098f0c641855180b5fe23793b72eea50d0115b4';
   var testPrevTx = 'a477af6b2667c29670467e4e0728b685ee07b240235771862318e29ddbe58458';
   var testAmount = 1020000;
   var testTransaction = new Transaction()
@@ -45,7 +44,7 @@ describe('Transaction', function() {
       'script': testScript,
       'satoshis': testAmount
     })
-    .to('mrU9pEmAx26HcbKVrABvgL7AwA5fjNFoDc', testAmount - 10000);
+    .to('ztjjLXk3gewNbowz8pnE8eqdF4mJfyJNR54', testAmount - 10000);
 
   it('can serialize to a plain javascript object', function() {
     var object = testTransaction.toObject();
@@ -67,7 +66,6 @@ describe('Transaction', function() {
   });
 
   it('will return zero as the fee for a coinbase', function() {
-    // block #2: 0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098
     var coinbaseTransaction = new Transaction('01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000');
     coinbaseTransaction.getFee().should.equal(0);
   });
@@ -192,7 +190,7 @@ describe('Transaction', function() {
 
   // TODO: Migrate this into a test for inputs
 
-  var fromAddress = 'mszYqVnqKoQx4jcTdJXxwKAissE3Jbrrc1';
+  var fromAddress = 'ztjjLXk3gewNbowz8pnE8eqdF4mJfyJNR54';
   var simpleUtxoWith100000Satoshis = {
     address: fromAddress,
     txId: 'a477af6b2667c29670467e4e0728b685ee07b240235771862318e29ddbe58458',
@@ -202,12 +200,12 @@ describe('Transaction', function() {
   };
   var anyoneCanSpendUTXO = JSON.parse(JSON.stringify(simpleUtxoWith100000Satoshis));
   anyoneCanSpendUTXO.script = new Script().add('OP_TRUE');
-  var toAddress = 'mrU9pEmAx26HcbKVrABvgL7AwA5fjNFoDc';
-  var changeAddress = 'mgBCJAsvzgT2qNNeXsoECg2uPKrUsZ76up';
-  var changeAddressP2SH = '2N7T3TAetJrSCruQ39aNrJvYLhG1LJosujf';
-  var privateKey = 'cSBnVM4xvxarwGQuAfQFwqDg9k5tErHUHzgWsEfD4zdwUasvqRVY';
-  var private1 = '6ce7e97e317d2af16c33db0b9270ec047a91bff3eff8558afb5014afb2bb5976';
-  var private2 = 'c9b26b0f771a0d2dad88a44de90f05f416b3b385ff1d989343005546a0032890';
+  var toAddress = 'ztdXYX3BmUJarZitJ2r548c6QXX5219DgPX';
+  var changeAddress = 'ztrMvpqzYHDFW6U1uuSyjSxVk2BNCoFPifh';
+  var changeAddressP2SH = 'zrMgbokJSQS5SR8rXd6isroxYLYbdTdmwsF';
+  var privateKey = 'cNhdP3VG43uVRPQCgk4QkwavWSHnbUoCjQirCxWmCbAEzVLgSE2x';
+  var private1 = 'cNhdP3VG43uVRPQCgk4QkwavWSHnbUoCjQirCxWmCbAEzVLgSE2x';
+  var private2 = 'cRQYm3PEL6x4uqG871ShiUf7rmtrE9HtYzk3qmAoEDJth5r7bur1';
   var public1 = new PrivateKey(private1).publicKey;
   var public2 = new PrivateKey(private2).publicKey;
 
@@ -222,11 +220,11 @@ describe('Transaction', function() {
   var fourth = 25e6;
   var half = 5e7;
 
-  var p2shPrivateKey1 = PrivateKey.fromWIF('cNuW8LX2oeQXfKKCGxajGvqwhCgBtacwTQqiCGHzzKfmpHGY4TE9');
+  var p2shPrivateKey1 = PrivateKey.fromWIF('cNhdP3VG43uVRPQCgk4QkwavWSHnbUoCjQirCxWmCbAEzVLgSE2x');
   var p2shPublicKey1 = p2shPrivateKey1.toPublicKey();
-  var p2shPrivateKey2 = PrivateKey.fromWIF('cTtLHt4mv6zuJytSnM7Vd6NLxyNauYLMxD818sBC8PJ1UPiVTRSs');
+  var p2shPrivateKey2 = PrivateKey.fromWIF('cRQYm3PEL6x4uqG871ShiUf7rmtrE9HtYzk3qmAoEDJth5r7bur1');
   var p2shPublicKey2 = p2shPrivateKey2.toPublicKey();
-  var p2shPrivateKey3 = PrivateKey.fromWIF('cQFMZ5gP9CJtUZPc9X3yFae89qaiQLspnftyxxLGvVNvM6tS6mYY');
+  var p2shPrivateKey3 = PrivateKey.fromWIF('cMdUDReX9aH3r6dKVM8SPJubsZSqrKvag5jYHAHBBVLS4hutRcqK');
   var p2shPublicKey3 = p2shPrivateKey3.toPublicKey();
 
   var p2shAddress = Address.createMultisig([
@@ -591,10 +589,10 @@ describe('Transaction', function() {
         .from({
           'txId': testPrevTx,
           'outputIndex': 0,
-          'script': testScript,
+          'script': testScriptHex,
           'satoshis': testAmount
         })
-        .to('mrU9pEmAx26HcbKVrABvgL7AwA5fjNFoDc', testAmount - 10000);
+        .to('ztdXYX3BmUJarZitJ2r548c6QXX5219DgPX', testAmount - 10000);
 
       tx.outputs[0]._satoshis = 100;
       tx.outputs[0]._satoshisBN = new BN('fffffffffffffff', 16);
@@ -607,10 +605,10 @@ describe('Transaction', function() {
         .from({
           'txId': testPrevTx,
           'outputIndex': 0,
-          'script': testScript,
+          'script': testScriptHex,
           'satoshis': testAmount
         })
-        .to('mrU9pEmAx26HcbKVrABvgL7AwA5fjNFoDc', testAmount - 10000);
+        .to('ztdXYX3BmUJarZitJ2r548c6QXX5219DgPX', testAmount - 10000);
 
       tx.outputs[0]._satoshis = -100;
       tx.outputs[0]._satoshisBN = new BN(-100, 10);
@@ -624,10 +622,10 @@ describe('Transaction', function() {
         .from({
           'txId': testPrevTx,
           'outputIndex': 0,
-          'script': testScript,
+          'script': testScriptHex,
           'satoshis': testAmount
         })
-        .to('mrU9pEmAx26HcbKVrABvgL7AwA5fjNFoDc', testAmount - 10000);
+        .to('ztdXYX3BmUJarZitJ2r548c6QXX5219DgPX', testAmount - 10000);
 
       tx.toBuffer = sinon.stub().returns({
         length: 10000000
@@ -644,10 +642,10 @@ describe('Transaction', function() {
         .from({
           'txId': testPrevTx,
           'outputIndex': 0,
-          'script': testScript,
+          'script': testScriptHex,
           'satoshis': testAmount
         })
-        .to('mrU9pEmAx26HcbKVrABvgL7AwA5fjNFoDc', testAmount - 10000);
+        .to('ztdXYX3BmUJarZitJ2r548c6QXX5219DgPX', testAmount - 10000);
 
       tx.isCoinbase = sinon.stub().returns(false);
       tx.inputs[0].isNull = sinon.stub().returns(true);
