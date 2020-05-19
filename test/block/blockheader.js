@@ -4,6 +4,7 @@ var bitcore = require('../..');
 var BN = require('../../lib/crypto/bn');
 var BufferReader = bitcore.encoding.BufferReader;
 var BufferWriter = bitcore.encoding.BufferWriter;
+var Networks = bitcore.Networks;
 
 var BlockHeader = bitcore.BlockHeader;
 var fs = require('fs');
@@ -257,26 +258,18 @@ describe('BlockHeader', function() {
 
 
   describe('#getDifficulty', function() {
-    /*
-    it('should get the correct difficulty for block 642579', function() {
+
+    it('should get the correct difficulty for testnet block 642579', function() {
       var x = BlockHeader.fromBuffer(blockbuf);
       x.bits.should.equal(521276672);
-      x.getDifficulty().should.equal(113.4574767366371);
-    });
-
-
-    it('should get the correct difficulty for testnet block 642812', function() {
-      var x = new BlockHeader({
-        bits: 0x1f10f056
-      });
-      x.getDifficulty().should.equal(0.47228723);
+      x.getDifficulty(Networks.testnet).should.equal(113.45747673);
     });
 
     it('should get the correct difficulty for livenet block 723794', function() {
       var x = new BlockHeader({
         bits: 0x1c09f488
       });
-      x.getDifficulty().should.equal(13482146.95503537);
+      x.getDifficulty(Networks.livenet).should.equal(13482146.95503537);
     });
 
     it('should use exponent notation if difficulty is larger than Javascript number', function() {
@@ -285,7 +278,7 @@ describe('BlockHeader', function() {
       });
       x.getDifficulty().should.equal(1.0077203022580299 * 1e54);
     });
-    */
+
   });
 
   it('coverage: caches the "_id" property', function() {

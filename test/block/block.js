@@ -11,7 +11,6 @@ var fs = require('fs');
 var should = chai.should();
 var Transaction = bitcore.Transaction;
 
-// https://test-insight.bitpay.com/block/000000000b99b16390660d79fcc138d2ad0c89a0d044c4201a02bdf1f61ffa11
 var dataJson = fs.readFileSync('test/data/blk642579-testnet.json').toString();
 var data = require('../data/blk642579-testnet');
 var dataBlocks = require('../data/bitcoind/blocks');
