@@ -176,6 +176,10 @@ describe('#Sidechain certificate', function() {
       assert.equal(sccer.id, sccerExpected.certid);
       assert.equal(sccer.hash, sccerExpected.certid); 
     });
+ 
+    it('test certificate outputs property', function() {
+      assert.equal(sccer.outputs.length, sccerExpected.vout.length);
+    });   
 
   }); 
 
