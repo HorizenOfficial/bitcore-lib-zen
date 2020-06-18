@@ -1,23 +1,23 @@
 {
-  "hash": "0b59c44027a06fba2b9ab1f85689db3ad93f87d7c4580e3c13120fdaad1ef738",
-  "confirmations": 24,
-  "size": 685,
-  "height": 317,
+  "hash": "0d3b87def51a17ff4fe17902172bcfcebc1c20c5a1fa4a4165fe0954fcc2b456",
+  "confirmations": 5,
+  "size": 1465,
+  "height": 413,
   "version": 3,
-  "merkleroot": "15814b134107a16fb3bf75ed5860c0e493550fd9d90760d9eea8b8a7b60c1cd1",
-  "scTxsCommitment": "e546a0fb0125419250097b2987bc47684d786bfeb64b4d29b375d3b1dabfb4ee",
+  "merkleroot": "0e7b0cc7d19b168b67bcc3de625a4ff4ea62c82db93a0028b5ec4d09636137d8",
+  "scTxsCommitment": "beb3bed1d1be3fc8c7c20dbe5845b70dd7aa824fb3371eb7cec1fdaad9f6b2c7",
   "tx": [
-    "432d56ecb4b763a1fcaa4304605cedfc418b80c8cb7835cfc5d1ba8708e28087"
+    "ffe725e85b25dfe0a72e23af16f84f6b1c2bf25dc52853112e06527bb87f8c4d"
   ],
   "cert": [
-    "37794bed6463d2f99e9ea32f82ed89d5a95b09be006f2aee7153a7a2876577c3"
+    "d71bba02af1b625d542d959cc0fec5d111ebc077724c1f0a340ba3b3cfabe7bc"
   ],
-  "time": 1589819585,
-  "nonce": "0000a23bca66865bf14591f9cabab287c126647379c12a796d5667f181130033",
-  "solution": "08942036566691cbd41b519059a4d57a592d0e0b03c7f49e853dfe34bc8fbdc6ee1e65b7",
-  "bits": "200f0efd",
-  "difficulty": 1.000018239355057,
-  "chainwork": "000000000000000000000000000000000000000000000000000000000000151e",
+  "time": 1592391066,
+  "nonce": "00008f4b38d7627f4d0a535eeb1507d2ca43127408b1edf9aa156b2c39e10008",
+  "solution": "090d51768307c617233ce7d11cd6b47aa9730cb4eb3977a53627e0397b9350978ebe5743",
+  "bits": "200f0ef7",
+  "difficulty": 1.000024319287931,
+  "chainwork": "0000000000000000000000000000000000000000000000000000000000001b7e",
   "anchor": "59d2cde5e65c1414c32ba54f0fe4bdb3d67618125286e6a191317917c812c6d7",
   "valuePools": [
     {
@@ -29,6 +29,7 @@
       "valueDeltaZat": 0
     }
   ],
-  "previousblockhash": "035b734e1ce865fd09fe12f6e77cafdcdfce323063cea194e50187cdc5f55acd",
-  "nextblockhash": "04aea503a186eade50c33a071aa8bf5538011f2d35aff165f023297222d2df8b"
+  "previousblockhash": "0dd2ee297f22368483126a8d1ce06bc8902be06a275c38b316a6d5be43375040",
+  "nextblockhash": "001447f9b6418b3cc9fdef3ec87e8363c5f8263e0a3bef974a52bdfde38e873b"
 }
+

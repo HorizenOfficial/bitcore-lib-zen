@@ -55,6 +55,8 @@ describe('#Sidechain creation', function() {
             assert.equal(sc.vsc_ccout[i].satoshis / 1e8,txJson.vsc_ccout[i].value);
             assert.equal(sc.vsc_ccout[i].address,txJson.vsc_ccout[i].address);
             assert.equal(sc.vsc_ccout[i].customData,txJson.vsc_ccout[i].customData);
+            assert.equal(sc.vsc_ccout[i].certVk,txJson.vsc_ccout[i].wCertVk);     
+            assert.equal(sc.vsc_ccout[i].constantData,txJson.vsc_ccout[i].constant);             
           }
 
           //vft_ccout

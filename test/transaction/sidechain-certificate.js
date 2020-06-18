@@ -30,6 +30,12 @@ describe('#Sidechain certificate', function() {
     it('parses the version correctly', function() {
       assert.equal(sccer.version, sccerExpected.version);
     }); 
+    it('parses the quality correctly', function() {
+      assert.equal(sccer.quality, sccerExpected.cert.quality);
+    }); 
+    it('parses the quality correctly', function() {
+      assert.equal(sccer.scProof, sccerExpected.cert.scProof);
+    }); 
     it('parses the getValueOfBackwardTransfers correctly', function() {
       var expectedVout = sccerExpected.vout.filter((ele) => { return ele[ "backward transfer"]});
       var expectedAmount = 0;
