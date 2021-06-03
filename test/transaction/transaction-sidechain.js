@@ -42,21 +42,33 @@ describe('#Sidechain creation', function() {
           }
 
           //Sidechain
+          var scParamsObject = tx.sc_params.toObject();
           var sc = {
-            vsc_ccout : tx.sc_params.toObject().vsc_ccout,
-            vft_ccout : tx.sc_params.toObject().vft_ccout
+            vsc_ccout : scParamsObject.vsc_ccout,
+            vft_ccout : scParamsObject.vft_ccout,
+            vcsw : scParamsObject.vcsw,
+            vmbtr_out : scParamsObject.vmbtr_out
           };
 
           //vsc_ccout
           assert.equal(sc.vsc_ccout.length,txJson.vsc_ccout.length);
           for (var i=0; i<txJson.vsc_ccout.length;i++) {
-            assert.equal(Transaction.calculateSidechainId(tx.hash, i), txJson.vsc_ccout[i].scid);
+            //assert.equal(Transaction.calculateSidechainId(tx.hash, i), txJson.vsc_ccout[i].scid);
             assert.equal(sc.vsc_ccout[i].epoch_length,txJson.vsc_ccout[i]["withdrawal epoch length"]);
             assert.equal(sc.vsc_ccout[i].satoshis / 1e8,txJson.vsc_ccout[i].value);
             assert.equal(sc.vsc_ccout[i].address,txJson.vsc_ccout[i].address);
             assert.equal(sc.vsc_ccout[i].customData,txJson.vsc_ccout[i].customData);
-            assert.equal(sc.vsc_ccout[i].certVk,txJson.vsc_ccout[i].wCertVk);     
-            assert.equal(sc.vsc_ccout[i].constantData,txJson.vsc_ccout[i].constant);             
+            assert.equal(sc.vsc_ccout[i].certVk,txJson.vsc_ccout[i].wCertVk);
+            assert.equal(sc.vsc_ccout[i].constantData,txJson.vsc_ccout[i].constant);
+            assert.equal(sc.vsc_ccout[i].wCeasedVk,txJson.vsc_ccout[i].wCeasedVk);
+            assert.deepEqual(sc.vsc_ccout[i].vFieldElementCertificateFieldConfig,txJson.vsc_ccout[i].vFieldElementCertificateFieldConfig);
+            assert.equal(sc.vsc_ccout[i].vBitVectorCertificateFieldConfig.length,txJson.vsc_ccout[i].vBitVectorCertificateFieldConfig.length);
+            for (var j=0; j<txJson.vsc_ccout[i].vBitVectorCertificateFieldConfig.length; j++) {
+                assert.deepEqual(sc.vsc_ccout[i].vBitVectorCertificateFieldConfig[j],txJson.vsc_ccout[i].vBitVectorCertificateFieldConfig[j]);
+            }
+            assert.equal(sc.vsc_ccout[i].forwardTransferScFee / 1e8,txJson.vsc_ccout[i].ftScFee);
+            assert.equal(sc.vsc_ccout[i].mainchainBackwardTransferScFee / 1e8,txJson.vsc_ccout[i].mbtrScFee);
+            assert.equal(sc.vsc_ccout[i].mbtrRequestDataLength,txJson.vsc_ccout[i].mbtrRequestDataLength);
           }
 
           //vft_ccout
@@ -66,6 +78,12 @@ describe('#Sidechain creation', function() {
             assert.equal(tx.sc_params.vft_ccout[i].satoshis / 1e8,txJson.vft_ccout[i].value);
             assert.equal(sc.vft_ccout[i].address,txJson.vft_ccout[i].address);
           }
+
+          //vcsw
+          //TODO
+
+          //vmbtr_out
+          //TODO
 
           //serialize
           assert.equal(tx.toBuffer().toString('hex'),hexa);
