@@ -13,7 +13,7 @@ describe('#Sidechain creation', function() {
     var index = 0;
     txes.forEach(function(ele) {
 
-      it('vector #' + index, function() {
+      it('vector #' + index+": "+ele.description, function() {
 
           var hexa = ele.hex;
           var tx=Transaction(hexa);
